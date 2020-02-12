@@ -2,8 +2,6 @@ import React from 'react';
 
 const DataLoader = injectedProps =>(BaseComponent) => {
     class HOC extends React.Component{
-
-        
         state = {
             localData : {
                 id      : "1",
@@ -37,7 +35,6 @@ const DataLoader = injectedProps =>(BaseComponent) => {
             }catch(error){
                 console.log("fetchRemoteData error : ", error)
             }
-            
         }
 
         render(){
