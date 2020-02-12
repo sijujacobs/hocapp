@@ -1,9 +1,17 @@
 import React from 'react';
-import { render } from '@testing-library/react';
+import renderer from 'react-test-renderer';
+
 import App from './App';
 
-test('renders learn react link', () => {
-  const { getByText } = render(<App />);
-  const linkElement = getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
+
+import { shallow, mount, render } from 'enzyme';
+
+
+
+describe('<App />', () => {
+  it('has 1 child', () => {
+    const wrapper = shallow(<Foo />);
+    //const tree = renderer.create(<App />).toJSON();
+    //expect(tree.children.length).toBe(1);
+  });
 });
