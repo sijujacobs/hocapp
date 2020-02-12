@@ -1,7 +1,9 @@
 import React from 'react';
+import LoadedComponent from './components/DataList';
 const App = () => {
   return(<div className="appContainer">
-APP Container
+
+<LoadedComponent />
   </div>)
 }
 
