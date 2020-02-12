@@ -9,17 +9,15 @@ const DataLoader = injectedProps =>(BaseComponent) => {
                 date    : "02-22-2020"
             },
             remoteData :{
-
             }
         }
 
         componentDidMount(){
             console.log(' componentDidMount :: BaseComponent  injectedProps : ',  injectedProps)
-            // const localDataKey = "lDataKey"
-            // const localData = localStorage.getItem(localDataKey); 
-            // localStorage.setItem(localDataKey, (localData)|| this.state.localData);
-
             this.fetchRemoteData(injectedProps.dataType);
+                // const localDataKey = "lDataKey"
+                // const localData = localStorage.getItem(localDataKey); 
+                // localStorage.setItem(localDataKey, (localData)|| this.state.localData);
         }
 
         fetchRemoteData(dataType){
@@ -28,8 +26,9 @@ const DataLoader = injectedProps =>(BaseComponent) => {
                 fetch(baseURL)
                 .then(res => res.json())
                 .then(result => {
-                    console.log("fetch Result : ", result);
-                    this.setState({ remoteData: result })
+                    var splicedResult = result.splice(0, 10);
+                    console.log("fetch Result : ", splicedResult);
+                    this.setState({ remoteData:  splicedResult});
                 })
                 .catch(error => console.log("fetch error : ", error));
             }catch(error){
@@ -38,7 +37,7 @@ const DataLoader = injectedProps =>(BaseComponent) => {
         }
 
         render(){
-            return(<BaseComponent localData={this.state.localData} />)
+            return(<BaseComponent localData={this.state.localData} remoteData={this.state.remoteData} />)
         }
     }
 
